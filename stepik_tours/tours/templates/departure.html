@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stepik Travel</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      
+
+      <h1 class="display-5 mt-4">
+        Летим из
+        <span data-test="from">
+          {% if country == "msk" %} Москвы {% elif country == "spb" %} Санкт-Петербурга {% elif country == "nsk" %}
+          Новосибирска {% elif country == "ekb" %} Екатеринбурга {% elif country == "kazan" %} Казани {% endif%}
+        </span>
+      </h1>
+      <p class="mb-4">
+        Найдено <span data-test="tourcount">{{ len }}</span> туров, от <span data-test="pricemin">26000</span> до
+        <span data-test="pricemax">84600</span> и от <span data-test="nightsmax">4</span> ночей до
+        <span data-test="nightsmax">15</span> ночей
+      </p>
+      <!-- HERO -->
+
+      <!-- CARDS -->
+
+      <div class="row mt-5" data-test="cards">
+        {% for key, value in tours %}
+        <div class="col-4" data-test="card">
+          <div class="card mb-3">
+            <img src="{{ value.picture }}" class="card-img-top img-fluid" data-test="picture" />
+            <div class="card-body">
+              <h5 class="card-title">{{ value.title }}</h5>
+              <p class="card-text">{{ value.description }}</p>
+              <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        {% endfor%}
+      </div>
+    </div>
+  </body>
+</html>
